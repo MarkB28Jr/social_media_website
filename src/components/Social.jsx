@@ -3,12 +3,13 @@ import axios from 'axios'
 
 
 const Social = () => {
+  
 
 
-
+/*************** Return ***************/
   return (
     <div className="social">
-      <h1>Social</h1>
+    <h1>Social</h1>
     </div>
   )
 }
