@@ -1,56 +1,62 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react';
 
 
 const Login = () => {
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+const [login, setLogin] = useState('')
+  const [email, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const Login = async (e) => {
-    e.preventDefualt()
-    const response = await fetch('http://localhost:5000/login', {
-      method: 'POST',
-      body: JSON.stringify({ username, password }),
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include'
-    })
-    if (response.status !== 200) {
-      alert('Failed')
-    } else {
-      alert('Succes')
-      window.location.href = '/'
+  // const handleChange = useCallback((e) => {
+  //   setLogin(e.target.value);
+  // }, []);
+  const handleEmailChange = useCallback((e) => {
+    setUsername(e.target.value);
+  }, []);
+  const handlePasswordChange = useCallback((e) => {
+    setPassword(e.target.value);
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:4000/users/login', {email: email, password: password })
+      setLogin([...login, response.data])
+      setUsername("")
+      setPassword("");
+    } catch (error) {
+      console.log(error)
     }
   }
 
+    return (
+      <div>
+        <form onSubmit={handleSubmit} className='login'>
+          <h1>Login</h1>
+          <div>
+            <label>Name</label>
+            <input
+              type='text'
+              placeholder='Username'
+              required
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type='password'
+              placeholder='Password'
+              required
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <button type='submit' >Log In</button>
+        </form>
+      </div>
+    );
+  };
 
-  return (
-    <div>
-      <form onSubmit={Login} className='login'>
-        <h1>Login</h1>
-        <div>
-          <label>Name</label>
-          <input
-            type='text'
-            placeholder='Username'
-            required
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='password'
-            placeholder='Password'
-            required
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </div>
-        <button type='submit' >Log In</button>
-      </form >
-    </div >
-  )
-}
-
-export default Login
+  export default Login;

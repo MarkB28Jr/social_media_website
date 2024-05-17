@@ -1,43 +1,63 @@
-import { useState } from "react"
+import { useEffect, useState, useCallback } from "react"
+import axios from 'axios'
 
 
 
 const Register = () => {
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  // const [email, setEmail] = useState('')
 
-  const onSubmit = async () => {
-    e.preventDefault()
-    const response = await fetch('http://localhost:5000/api/register', {
-      method: 'POST',
-      body: JSON.stringify({ email, username, password }),
-      headers: { 'Content-Type': 'application/json' }
-    })
-    if (response.status !== 200) {
-      alert('Something went wrong')
-    } else {
-      alert('Succes')
-      window.location.href = '/login'
+  const fetchUser = async () => {
+    let response = await axios.get('http://localhost:4000/user')
+    setParks(response.data)
+  }
+
+  // Handle Changes
+  const handleEmail = useCallback((e) => {
+    setEmail(e.target.value);
+  }, []);
+  const handlePassword = useCallback((e) => {
+    setPassword(e.target.value);
+  }, []);
+
+  // Handle Form Submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:4000/user', { email: email, password: password })
+      setEmail([...email, response.data])
+      setPassword("")
+
+      // setFood("");
+    } catch (error) {
+      console.log(error)
     }
   }
 
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+
+
+  /*************** Return ***************/
   return (
     <div>
-      <form onSubmit={onSubmit} className="register" >
+      <form onSubmit={handleSubmit} className="register" >
         <h1>Register</h1>
         <div>
           <label>Email</label>
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmail}
             placeholder="Enter email"
             required
           />
         </div>
-        <div>
+        {/* <div>
           <label>Name</label>
           <input
             type="text"
@@ -46,13 +66,13 @@ const Register = () => {
             placeholder="Enter Username"
             required
           />
-        </div>
+        </div> */}
         <div>
           <label>Password</label>
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePassword}
             placeholder="Enter Password"
             required
           />
