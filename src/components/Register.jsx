@@ -1,84 +1,77 @@
-import { useEffect, useState, useCallback } from "react"
+import { useState } from "react"
 import axios from 'axios'
+import { toast } from 'react-hot-toast'
+import { useNavigate } from "react-router-dom"
 
 
 
 const Register = () => {
+  const navigate = useNavigate()
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    password: '',
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  // const [email, setEmail] = useState('')
+  })
 
-  const fetchUser = async () => {
-    let response = await axios.get('http://localhost:4000/user')
-    setParks(response.data)
-  }
-
-  // Handle Changes
-  const handleEmail = useCallback((e) => {
-    setEmail(e.target.value);
-  }, []);
-  const handlePassword = useCallback((e) => {
-    setPassword(e.target.value);
-  }, []);
-
-  // Handle Form Submit
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    const { name, email, password } = data
     try {
-      const response = await axios.post('http://localhost:4000/user', { email: email, password: password })
-      setEmail([...email, response.data])
-      setPassword("")
-
-      // setFood("");
+      const { data } = await axios.post('/users/register', {
+        name, email, password
+      })
+      if (data.error) {
+        toast.error(data.error)
+      } else {
+        setData({
+          name: '',
+          email: '',
+          password: '',
+        })
+        toast.success('Register Succesful!')
+        navigate('/users/login')
+      }
     } catch (error) {
       console.log(error)
     }
   }
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
-
-
   /*************** Return ***************/
   return (
     <div>
-      <form onSubmit={handleSubmit} className="register" >
+      <form onSubmit={onSubmit} className="register" >
         <h1>Register</h1>
+        <div>
+          <label>Name</label>
+          <input
+            type="name"
+            value={data.name}
+            onChange={(e) => setData({ ...data, name: e.target.value })}
+            placeholder="Enter Name"
+          />
+        </div>
         <div>
           <label>Email</label>
           <input
             type="email"
-            value={email}
-            onChange={handleEmail}
+            value={data.email}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
             placeholder="Enter email"
-            required
           />
         </div>
-        {/* <div>
-          <label>Name</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter Username"
-            required
-          />
-        </div> */}
         <div>
           <label>Password</label>
           <input
             type="password"
-            value={password}
-            onChange={handlePassword}
+            value={data.password}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
             placeholder="Enter Password"
-            required
           />
         </div>
         <button type="submit" ></button>
       </form>
+
     </div>
   )
 }

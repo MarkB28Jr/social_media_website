@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+// import { useState } from 'react';
 
 const Nav = () => {
-  const { username, isLoggedIn } = useContext(AuthContext);
+  // const { user, isLoggedIn } = useState('');
 
   return (
     <div className="nav">
@@ -12,14 +11,14 @@ const Nav = () => {
         <NavLink to="/social">Social</NavLink>
         <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/community">Community</NavLink>
-        {isLoggedIn ? (
-          <span>Welcome, {username}!</span>
+        {/* {isLoggedIn ? (
+          <span>Welcome, {user.email}!</span>
         ) : (
-          <>
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/register">Register</NavLink>
-          </>
-        )}
+          <> */}
+            <NavLink to="/users/login">Login</NavLink>
+            <NavLink to="/users/register">Register</NavLink>
+          {/* </>
+        )} */}
       </nav>
     </div>
   );

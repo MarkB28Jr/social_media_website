@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useCallback, useEffect } from "react"
+import axios from 'axios'
 
 
 const Profile = () => {
@@ -102,7 +103,7 @@ const Profile = () => {
       </div>
       <button type="submit" ></button>
     </form>
-    <div>
+    {/* <div>
         {socials.map((social) => (
           <div key={social._id}>
             <p>{social.profileName}</p>
@@ -110,7 +111,7 @@ const Profile = () => {
             <p>{social.gender}</p>
           </div>
         ))}
-      </div>
+      </div> */}
   </div>
   )
 }
