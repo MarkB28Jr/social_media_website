@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from "react-router-dom"
 import Social from './components/Social'
 import Home from './components/Home'
-import Profile from './components/Profile'
+// import Profile from './components/Profile'
 import Community from './components/Community'
 import Nav from './components/Nav'
 import Register from './components/Register'
@@ -24,7 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/social" element={<Social />} />
-            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/community" element={<Community />} />
             <Route path="/users/login" element={<Login />} />
             <Route path="/users/register" element={<Register />} />
