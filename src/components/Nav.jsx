@@ -9,7 +9,7 @@ const Nav = () => {
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/social">Social</NavLink>
-        {/* <NavLink to="/profile">Profile</NavLink> */}
+        <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/community">Community</NavLink>
         {/* {isLoggedIn ? (
           <span>Welcome, {user.email}!</span>

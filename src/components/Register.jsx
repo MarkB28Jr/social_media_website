@@ -3,15 +3,12 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom"
 
-
-
 const Register = () => {
   const navigate = useNavigate()
   const [data, setData] = useState({
     name: '',
     email: '',
     password: '',
-
   })
 
   const onSubmit = async (e) => {
@@ -71,7 +68,6 @@ const Register = () => {
         </div>
         <button type="submit" ></button>
       </form>
-
     </div>
   )
 }
