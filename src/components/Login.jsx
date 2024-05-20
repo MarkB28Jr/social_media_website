@@ -35,8 +35,8 @@ const Login = () => {
 
   /*************** Return ***************/
   return (
-    <div>
-      <form onSubmit={onSubmit} className="register" >
+    <div className="bg-blue-50 h-screen flex items-center">
+      <form onSubmit={onSubmit} className="w-64 mx-auto mb-12">
         <h1>Login</h1>
         <div>
           <label>Email</label>
@@ -46,6 +46,7 @@ const Login = () => {
             value={data.email}
             onChange={(e) => setData({ ...data, email: e.target.value })}
             placeholder="Enter email"
+            className="block w-full rounded-sm p-2 mb-2 border"
           />
         </div>
         <div>
