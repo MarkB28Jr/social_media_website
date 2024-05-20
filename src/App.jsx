@@ -6,17 +6,18 @@ import Profile from './components/Profile'
 import Community from './components/Community'
 import Nav from './components/Nav'
 import Register from './components/Register'
-import Login from './components/Login'
+// import Login from './components/Login'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
 import { UserContextProvider } from './context/UserContext';
+import Rout from './components/Rout';
 
 function App() {
   axios.defaults.baseURL = 'http://localhost:4000'
   axios.defaults.withCredentials = true
   return (
-    <div className="bg-cyan-500 hover:bg-cyan-600">
     <UserContextProvider>
+    <div className="bg-cyan-500 hover:bg-cyan-600">
       <Nav />
       <Toaster position='center' toastOptions={{ duration: 2000 }} />
       <main>
@@ -25,12 +26,12 @@ function App() {
           <Route path="/social" element={<Social />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/community" element={<Community />} />
-          <Route path="/users/login" element={<Login />} />
-          <Route path="/users/register" element={<Register />} />
+          {/* <Route path="/users/login" element={<Login />} /> */}
+          <Route path="/users/register" element={<Rout />} />
         </Routes>
       </main>
-    </UserContextProvider>
     </div>
+    </UserContextProvider>
   );
 }
 

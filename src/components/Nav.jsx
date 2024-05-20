@@ -15,7 +15,7 @@ const Nav = () => {
           <span>Welcome, {user.email}!</span>
         ) : (
           <> */}
-            <NavLink to="/users/login">Login</NavLink>
+            {/* <NavLink to="/users/login">Login</NavLink> */}
             <NavLink to="/users/register">Register</NavLink>
           {/* </>
         )} */}

@@ -4,17 +4,26 @@ import { createContext, useState, useEffect } from 'react'
 export const UserContext = createContext({})
 
 export function UserContextProvider({ children }) {
-  const [email, setEmail] = useState(null)
-  const [id, setId] = useState(null)
-  
+  const [username, setUsername] = useState('');
+  const [id, setId] = useState(''); 0
+  const [profileLoaded, setProfileLoaded] = useState(false);
+
   useEffect(() => {
-    axios.get('/profile').then(response => {
-      setId(response.data.userId);
-      setEmail(response.data.email);
-    });
-  }, []);
+    if (!profileLoaded) {
+      axios.get('/profile')
+        .then(response => {
+          console.log(response.data)
+          setId(response.data.userId);
+          setUsername(response.data.username);
+          setProfileLoaded(true);
+        })
+        .catch(error => {
+          console.error('Error fetching profile:', error);
+        });
+    }
+  }, [profileLoaded]);
   return (
-    <UserContext.Provider value={{ email, setEmail, id, setId}}>
+    <UserContext.Provider value={{ username, setUsername, id, setId }}>
       {children}
     </UserContext.Provider>
   )
