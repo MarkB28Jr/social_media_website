@@ -1,6 +1,7 @@
 import Register from "./Register"
 import { useContext } from "react"
 import { UserContext } from "../context/UserContext"
+import Community from './Community'
 
 
 const Rout = () => {

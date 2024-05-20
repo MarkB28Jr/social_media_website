@@ -13,7 +13,7 @@ const Community = () => {
     
   }, [])
 
-  const handleMessage = (e) => {
+  const handleMessage =  async (e) => {
     console.log('new message', e)
   }
 

@@ -2,7 +2,6 @@ import './App.css';
 import { Routes, Route } from "react-router-dom"
 import Social from './components/Social'
 import Home from './components/Home'
-// import Profile from './components/Profile'
 import Community from './components/Community'
 import Nav from './components/Nav'
 import axios from 'axios'
@@ -16,7 +15,6 @@ function App() {
 
   return (
     <UserContextProvider className="bg-cyan-500 hover:bg-cyan-600">
-    {/* <div > */}
       <Nav />
       <Toaster position='center' toastOptions={{ duration: 2000 }} />
       <main className='flex-center'>
@@ -27,7 +25,6 @@ function App() {
           <Route path="/users/register" element={<Rout />} />
         </Routes>
       </main>
-    {/* </div> */}
     </UserContextProvider>
   );
 }

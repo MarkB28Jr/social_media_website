@@ -3,10 +3,8 @@ import axios from 'axios'
 import { UserContext } from "../context/UserContext"
 
 const Register = () => {
-  // const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  // const [isLoginOrRegister, setIsLoginOrRegister] = useState('login')
   const {setUsername: setLoggedInUser, setId} = useContext(UserContext)
 
   const onSubmit = async (e) => {
@@ -14,7 +12,9 @@ const Register = () => {
     try {
       const { data } = await axios.post('/users/register', { username, password })
       setLoggedInUser(username)
+      console.log(username)
       setId(data.id)
+      console.log(data.id)
     } catch (error) {
       console.log(error)
     }
