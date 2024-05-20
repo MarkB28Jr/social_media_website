@@ -15,6 +15,7 @@ function App() {
   axios.defaults.baseURL = 'http://localhost:4000'
   axios.defaults.withCredentials = true
   return (
+    <div className="bg-cyan-500 hover:bg-cyan-600">
     <UserContextProvider>
       <Nav />
       <Toaster position='center' toastOptions={{ duration: 2000 }} />
@@ -29,6 +30,7 @@ function App() {
         </Routes>
       </main>
     </UserContextProvider>
+    </div>
   );
 }
 

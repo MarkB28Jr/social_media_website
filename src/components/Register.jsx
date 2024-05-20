@@ -5,27 +5,17 @@ import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   const navigate = useNavigate()
-  const [data, setData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  })
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password } = data
+    // const { email, password } = data
     try {
-      const { data } = await axios.post('/users/register', {
-        name, email, password
-      })
+      const { data } = await axios.post('/users/register', { email, password })
       if (data.error) {
         toast.error(data.error)
       } else {
-        setData({
-          name: '',
-          email: '',
-          password: '',
-        })
         toast.success('Register Succesful!')
         navigate('/users/login')
       }
@@ -39,34 +29,38 @@ const Register = () => {
     <div>
       <form onSubmit={onSubmit} className="register" >
         <h1>Register</h1>
-        <div>
+        {/* <div>
           <label>Name</label>
           <input
             type="name"
             value={data.name}
             onChange={(e) => setData({ ...data, name: e.target.value })}
             placeholder="Enter Name"
+            className="m-3"
           />
-        </div>
+        </div> */}
         <div>
           <label>Email</label>
           <input
             type="email"
-            value={data.email}
-            onChange={(e) => setData({ ...data, email: e.target.value })}
+            value={email}
+            onChange={(e) => setEmail(e.target.value )}
             placeholder="Enter email"
+            className="m-3"
           />
         </div>
         <div>
           <label>Password</label>
           <input
             type="password"
-            value={data.password}
-            onChange={(e) => setData({ ...data, password: e.target.value })}
+            value={password}
+            onChange={(e) => setPassword(e.target.value )}
+
             placeholder="Enter Password"
+            className="m-3"
           />
         </div>
-        <button type="submit" ></button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-12 border border-blue-700 rounded" type="submit" ></button>
       </form>
     </div>
   )
