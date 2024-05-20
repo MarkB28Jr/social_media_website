@@ -5,22 +5,15 @@ const Nav = () => {
   // const { user, isLoggedIn } = useState('');
 
   return (
-    <div className="nav">
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/social">Social</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
-        <NavLink to="/community">Community</NavLink>
-        {/* {isLoggedIn ? (
-          <span>Welcome, {user.email}!</span>
-        ) : (
-          <> */}
-            {/* <NavLink to="/users/login">Login</NavLink> */}
-            <NavLink to="/users/register">Register</NavLink>
-          {/* </>
-        )} */}
-      </nav>
-    </div>
+    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Community</span>
+        <NavLink className="text-white self-strech p-1 justify-center" to="/">Home</NavLink>
+        <NavLink className="text-white self-strech p-1" to="/social">Social</NavLink>
+        <NavLink className="text-white self-strech p-1" to="/community">Community</NavLink>
+        <NavLink className="text-white self-strech p-1" to="/users/register">Register</NavLink>
+      </div>
+    </nav>
   );
 };
 

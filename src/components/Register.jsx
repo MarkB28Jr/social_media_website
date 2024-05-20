@@ -22,8 +22,8 @@ const Register = () => {
 
   /*************** Return ***************/
   return (
-    <div>
-      <form onSubmit={onSubmit} className="register" >
+    <div className="flex justify-center items-center text-center mt-20 ">
+      <form onSubmit={onSubmit} className="border rounded bg-gray-200" >
         <h1>Register</h1>
         <div>
           <input
@@ -31,7 +31,7 @@ const Register = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter Username"
-            className="m-3"
+            className="m-3 rounded-md text-center"
           />
         </div>
         <div>
@@ -40,10 +40,10 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter Password"
-            className="m-3"
+            className="m-3 rounded-md text-center"
           />
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-12 border border-blue-700 rounded" type="submit" >Register</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 border border-blue-700 rounded" type="submit" >Register</button>
       </form>
     </div>
   )
