@@ -4,7 +4,6 @@
 const Home = () => {
 
 
-
 /*************** Return ***************/
   return (
     <div className="center">

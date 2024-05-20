@@ -7,11 +7,23 @@ const Social = () => {
 
 
 /*************** Return ***************/
-  return (
-    <div className="social">
-    <h1>Social</h1>
+return (
+  <div className="flex h-screen ">
+    <div className="bg-purple-100 w-1/3">
+      <h1 className="text-center items-center">Contacts</h1>
     </div>
-  )
+
+
+    <div className="flex flex-col bg-purple-500 w-2/3 p-2">
+      <div className="flex-grow">
+        <h1 className="text-center items-center">Different Communitys
+          </h1> 
+      </div>
+      <div className="flex gap-2">
+      </div>
+    </div>
+  </div>
+)
 }
 
 export default Social

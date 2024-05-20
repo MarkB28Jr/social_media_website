@@ -27,7 +27,7 @@ const Community = () => {
 
 
       <div className="flex flex-col bg-purple-500 w-2/3 p-2">
-        <div className="flex-grow">
+        <div className="flex-grow text-center items-center">
           Message goes here
         </div>
         <div className="flex gap-2">

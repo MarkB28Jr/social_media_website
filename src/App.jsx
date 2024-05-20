@@ -22,6 +22,7 @@ function App() {
       <main className='flex-center'>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/social" element={<Social />} />
           <Route path="/community" element={<Community />} />
           <Route path="/users/register" element={<Rout />} />
         </Routes>
