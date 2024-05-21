@@ -1,19 +1,13 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
-// import { useNavigate } from "react-router-dom"
-// import { toast } from 'react-hot-toast'
+import { useNavigate } from "react-router-dom"
+import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 
 
 const Social = () => {
-
-  // const navigate = useNavigate()
   const [socials, setSocials] = useState('')
   const [communitys, setCommunitys] = useState('')
-  // const [profileName, setProfileName] = useState('')
-  // const [age, setAge] = useState('')
-  // const [gender, setGender] = useState('')
-  // const [image, setImage] = useState('')
 
   const fetchSocials = async () => {
     let response = await axios.get('/social')
@@ -24,28 +18,9 @@ const Social = () => {
     setCommunitys(response.data)
   }
 
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const { data } = await axios.post('/social', { profileName, age, gender })
-  //     setSocials([...socials, data])
-  //     setProfileName("")
-  //     setAge("");
-  //     setGender("");
-  //     if (data.error) {
-  //       toast.error(data.error)
-  //     } else {
-  //       toast.success('Profile made!')
-  //       navigate('/community')
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
   useEffect(() => {
     fetchSocials();
   }, [])
-
   useEffect(() => {
     fetchCommunitys();
   }, [])
@@ -80,7 +55,7 @@ const Social = () => {
             <div className="grid grid-cols-1 justify-center items-center" >
               {communitys.map((community) => (
                   <div key={community._id} className="bg-gray-400 border-4 border-solid border-black rounded-sm m-3">
-                <Link to={`/community/${community._id}`}>
+                <Link to={`/social/community/${community._id}`}>
                     <div className="m-1 rounded-md text-center underline bold text-2xl" >{community.communityName}</div>
                     <div className="m-1 rounded-md text-xl" >{community.content}</div>
                 </Link>

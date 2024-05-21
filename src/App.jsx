@@ -27,7 +27,7 @@ function App() {
           <Route path="/community" element={<Community />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/users/login" element={<Login />} />
-          <Route path="/community/:id" element={<CommunityDetails />} />
+          <Route path="/social/community/:id" element={<CommunityDetails />} />
           <Route path="/users/register" element={<Rout />} />
         </Routes>
       </main>
