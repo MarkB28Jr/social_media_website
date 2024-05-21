@@ -1,43 +1,25 @@
-import { useContext, useState } from "react"
 import axios from 'axios'
-import { UserContext } from "../context/UserContext"
+import { useContext, useState } from "react"
+// import { UserContext } from "../context/UserContext"
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom"
 
 const Register = () => {
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const { data } = await axios.post('/users/register', { username, password })
-  //     setLoggedInUser(username)
-  //     console.log(username)
-  //     setId(data.id)
-  //     console.log(data.id)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-  // const { setUsername: setLoggedInUser, setId } = useContext(UserContext)
-
-
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post('/users/register', { username, email, password })
+      setUsername('')
+      setPassword('')
+      setEmail('')
       if (data.error) {
         toast.error(data.error)
       } else {
-        // setLoggedInUser(username)
-        // console.log(username)
-        // setId(data.id)
-        // console.log(data.id)
         toast.success('Register Succesful!')
         navigate('/users/login')
       }
@@ -45,7 +27,7 @@ const Register = () => {
       console.log(error)
     }
   }
-  /*************** Return ***************/
+
   return (
     <div className="flex justify-center items-center text-center mt-20">
       <form onSubmit={onSubmit} className="border rounded bg-gray-500" >
@@ -77,7 +59,9 @@ const Register = () => {
             className="m-3 rounded-md text-center"
           />
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 border border-blue-700 rounded" type="submit" >Register</button>
+        <div>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 border border-blue-700 rounded m-2" type="submit" >Register</button>
+        </div>
       </form>
     </div>
   )

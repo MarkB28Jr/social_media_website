@@ -1,19 +1,19 @@
-import Register from "./Register"
-import { useContext } from "react"
-import { UserContext } from "../context/UserContext"
-import Community from './Community'
+// import Register from "./Register"
+// import { useContext } from "react"
+// import { UserContext } from "../context/UserContext"
+// import Community from './Community'
 
 
-const Rout = () => {
-  const {email, id} = useContext(UserContext)
+// const Rout = () => {
+//   const {email, id} = useContext(UserContext)
 
-  if(email){
-    return <Community />
-  }
+//   if(email){
+//     return <Community />
+//   }
   
-  return (
-      <Register /> 
-  )
-}
+//   return (
+      // <Register /> 
+//   )
+// }
 
-export default Rout
+// export default Rout

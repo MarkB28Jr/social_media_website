@@ -112,7 +112,7 @@ const Profile = () => {
                   <button className="border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-1 m-1 w-11 rounded-lg">Edit</button>
                 </Link>
                 <Link to={`/social/community/delete${social._id}`}>
-                  <button className="border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-2 w-12 rounded-lg ">Delete</button>
+                  <button className="border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-2 w-12 rounded-lg " onSubmit={handleDelete} >Delete</button>
                 </Link>
               </div>
             </div>
