@@ -43,11 +43,10 @@ const Profile = () => {
   }, [])
   /*************** Return ***************/
   return (
-    <div className="gap grid justify-center items-center text-center center ms-8">
+    <div className="gap grid justify-center items-center text-center center mt-20">
       <form onSubmit={onSubmit} className="bg-gray-300 rounded-lg" >
         <h1 className="text-center">Profile</h1>
         <div>
-          {/* <label>Name</label> */}
           <input
             type="text"
             value={profileName}
@@ -58,7 +57,6 @@ const Profile = () => {
           />
         </div>
         <div>
-          {/* <label>Age</label> */}
           <input
             type="text"
             value={age}
@@ -69,7 +67,6 @@ const Profile = () => {
           />
         </div>
         <div>
-          {/* <label>Image URL</label> */}
           <input
             type="text"
             value={image}
@@ -79,7 +76,6 @@ const Profile = () => {
           />
         </div>
         <div>
-          {/* <label>Gender</label> */}
           <input
             type="text"
             value={gender}
