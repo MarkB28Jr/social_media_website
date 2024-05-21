@@ -10,6 +10,8 @@ const Nav = () => {
         <NavLink className="text-white self-strech p-1 justify-center" to="/">Home</NavLink>
         <NavLink className="text-white self-strech p-1 justify-center" to="/social">Social</NavLink>
         <NavLink className="text-white self-strech p-1 justify-center" to="/community">Community</NavLink>
+        <NavLink className="text-white self-strech p-1 justify-center" to="/profile">Profile</NavLink>
+        <NavLink className="text-white self-strech p-1 justify-center" to="/users/login">Login</NavLink>
         <NavLink className="text-white self-strech p-1 justify-center" to="/users/register">Register</NavLink>
       </div>
     </nav>

@@ -3,19 +3,13 @@ import { useEffect, useState } from "react"
 
 
 const Community = () => {
-  const [ws, setWs] = useState('')
-
   
-  useEffect(() => {
-    const ws = new WebSocket('ws://localhost:4000')
-    setWs(ws)
-    ws.addEventListener('message', handleMessage)
-    
-  }, [])
+  const [community, setCommunity] = useState(null)
 
-  const handleMessage =  async (e) => {
-    console.log('new message', e)
-  }
+
+
+
+
 
 
   /*************** Return ***************/

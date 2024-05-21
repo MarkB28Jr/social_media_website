@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom"
 import Social from './components/Social'
 import Home from './components/Home'
 import Community from './components/Community'
+import Login from './components/Login'
+import Profile from './components/Profile'
 import Nav from './components/Nav'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
@@ -22,6 +24,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/social" element={<Social />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/users/login" element={<Login />} />
           <Route path="/users/register" element={<Rout />} />
         </Routes>
       </main>

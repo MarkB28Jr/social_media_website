@@ -1,28 +1,52 @@
 import { useContext, useState } from "react"
 import axios from 'axios'
 import { UserContext } from "../context/UserContext"
+import { toast } from 'react-hot-toast'
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
+
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const { data } = await axios.post('/users/register', { username, password })
+  //     setLoggedInUser(username)
+  //     console.log(username)
+  //     setId(data.id)
+  //     console.log(data.id)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const {setUsername: setLoggedInUser, setId} = useContext(UserContext)
+  // const { setUsername: setLoggedInUser, setId } = useContext(UserContext)
+
+
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post('/users/register', { username, password })
-      setLoggedInUser(username)
-      console.log(username)
-      setId(data.id)
-      console.log(data.id)
+      if (data.error) {
+        toast.error(data.error)
+      } else {
+        // setLoggedInUser(username)
+        // console.log(username)
+        // setId(data.id)
+        // console.log(data.id)
+        toast.success('Register Succesful!')
+        navigate('/users/login')
+      }
     } catch (error) {
       console.log(error)
     }
   }
-
   /*************** Return ***************/
   return (
-    <div className="flex justify-center items-center text-center mt-20 ">
+    <div className="flex justify-center items-center text-center mt-20">
       <form onSubmit={onSubmit} className="border rounded bg-gray-200" >
         <h1>Register</h1>
         <div>
