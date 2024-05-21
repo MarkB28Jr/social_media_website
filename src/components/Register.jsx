@@ -63,7 +63,7 @@ const Register = () => {
           <input
             type="email"
             value={email}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter Email"
             className="m-3 rounded-md text-center"
           />
