@@ -39,6 +39,17 @@ const Profile = () => {
     }
   }
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/social/community/delete${id}`)
+      setSocials(socials.filter((social) => social._id !== id))
+      toast.success('Profile deleted!')
+    } catch (error) {
+      console.log(error)
+      toast.error('Error deleting profile')
+    }
+  }
+
   useEffect(() => {
     fetchSocials();
   }, [])
