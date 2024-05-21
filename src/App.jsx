@@ -15,7 +15,7 @@ import ProfileUpdate from './components/ProfileUpdate';
 import ProfileDelete from './components/ProfileDelete';
 
 function App() {
-  axios.defaults.baseURL = 'http://localhost:4000'
+  axios.defaults.baseURL = 'https://backend-community-app-e900ac011257.herokuapp.com'
   axios.defaults.withCredentials = true
 
   return (

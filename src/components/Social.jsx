@@ -4,7 +4,6 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 
-
 const Social = () => {
   const [socials, setSocials] = useState('')
   const [communitys, setCommunitys] = useState('')
@@ -19,8 +18,6 @@ const Social = () => {
     setCommunitys(response.data)
   }
 
-
-  
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
