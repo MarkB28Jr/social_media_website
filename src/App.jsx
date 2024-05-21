@@ -6,6 +6,7 @@ import Community from './components/Community'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import Nav from './components/Nav'
+import CommunityDetails from './components/CommunityDetails';
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
 import { UserContextProvider } from './context/UserContext';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/community" element={<Community />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/users/login" element={<Login />} />
+          <Route path="/community/:id" element={<CommunityDetails />} />
           <Route path="/users/register" element={<Rout />} />
         </Routes>
       </main>

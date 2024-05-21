@@ -47,8 +47,8 @@ const Register = () => {
   /*************** Return ***************/
   return (
     <div className="flex justify-center items-center text-center mt-20">
-      <form onSubmit={onSubmit} className="border rounded bg-gray-200" >
-        <h1>Register</h1>
+      <form onSubmit={onSubmit} className="border rounded bg-gray-500" >
+        <h1 className="bold text-2xl">Register</h1>
         <div>
           <input
             type="text"
