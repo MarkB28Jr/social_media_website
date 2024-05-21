@@ -5,9 +5,9 @@ import Community from './Community'
 
 
 const Rout = () => {
-  const {username, id} = useContext(UserContext)
+  const {email, id} = useContext(UserContext)
 
-  if(username){
+  if(email){
     return <Community />
   }
   
