@@ -8,7 +8,7 @@ import { UserContext } from "../context/UserContext"
 
 const Login = () => {
   const navigate = useNavigate()
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { setUsername: setLoggedInUser, setId } = useContext(UserContext)
 
@@ -40,8 +40,8 @@ const Login = () => {
           <input
             name="username"
             type="emaitextl"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter Username"
             className="m-3 rounded-md text-center"
           />

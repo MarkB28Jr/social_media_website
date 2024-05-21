@@ -22,6 +22,7 @@ const Register = () => {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
   // const { setUsername: setLoggedInUser, setId } = useContext(UserContext)
 
 
@@ -29,7 +30,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/users/register', { username, password })
+      const { data } = await axios.post('/users/register', { username, email, password })
       if (data.error) {
         toast.error(data.error)
       } else {
@@ -55,6 +56,15 @@ const Register = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter Username"
+            className="m-3 rounded-md text-center"
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter Email"
             className="m-3 rounded-md text-center"
           />
         </div>
