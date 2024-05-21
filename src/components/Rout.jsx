@@ -1,18 +1,18 @@
 // import Register from "./Register"
 // import { useContext } from "react"
 // import { UserContext } from "../context/UserContext"
-// import Community from './Community'
+// import Social from './Social'
 
 
 // const Rout = () => {
-//   const {email, id} = useContext(UserContext)
+//   const {user} = useContext(UserContext)
 
-//   if(email){
-//     return <Community />
+//   if(user){
+//     return <Social />
 //   }
   
 //   return (
-      // <Register /> 
+//       <Register /> 
 //   )
 // }
 

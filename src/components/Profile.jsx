@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from 'react-hot-toast'
+import UserContext from "../context/UserContext"
 
 
 
 const Profile = () => {
+  const { user } = useContext(UserContext)
 
   const navigate = useNavigate()
   const [socials, setSocials] = useState('')
@@ -57,7 +59,7 @@ const Profile = () => {
   return (
     <div className="gap-10 flex justify-center items-center text-center center mt-20 ">
       <form onSubmit={onSubmit} className="bg-gray-300 rounded-lg" >
-        <h1 className="text-center bold text-2xl">Profile</h1>
+        <h1 className="text-center bold text-2xl">Profile{user}</h1>
         <div>
           <input
             type="text"

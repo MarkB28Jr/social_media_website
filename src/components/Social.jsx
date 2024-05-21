@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext} from "react"
 import axios from 'axios'
 // import { useNavigate } from "react-router-dom"
 import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import UserContext from "../context/UserContext"
 
 const Social = () => {
   const [socials, setSocials] = useState('')
   const [communitys, setCommunitys] = useState('')
   const [communityName, setCommunity] = useState('')
+  const { user } = useContext(UserContext)
 
   const fetchSocials = async () => {
     let response = await axios.get('/social')
@@ -46,12 +48,12 @@ const Social = () => {
   return (
     <div className="flex h-screen ">
       <div className="bg-purple-100 w-1/3">
-        <h1 className="bold text-2xl text-center mt-20">Profile</h1>
+        <h1 className="bold text-2xl text-center mt-20">{user.email}</h1>
         {socials.length > 0 && (
           <div className="grid grid-cols-1 justify-items-center  w-100" >
             {socials.map((social) => (
               <div key={social._id} className="grid left-0 top-0 bg-gray-300 border-2 border-black rounded-sm m-4">
-                  <img src={social.image} className="w-60 rounded-full m-1 justify-items-center self-center" placeholder="Enter Image URL address" />
+                <img src={social.image} className="w-60 rounded-full m-1 justify-items-center self-center" placeholder="Enter Image URL address" />
                 <div className="m-1 rounded-md bold" >Name: {social.profileName}</div>
                 <div className="m-1 rounded-md bold" >Age: {social.age}</div>
                 <div className="m-1 rounded-md bold" >Gender: {social.gender}</div>
@@ -69,12 +71,12 @@ const Social = () => {
           {communitys.length > 0 && (
             <div className="grid grid-cols-1 justify-center" >
               {communitys.map((community) => (
-                  <div key={community._id} className="bg-white border-2 border-solid border-black rounded-lg m-2">
-                <Link to={`/social/community/${community._id}`}>
+                <div key={community._id} className="bg-white border-2 border-solid border-black rounded-lg m-2">
+                  <Link to={`/social/community/${community._id}`}>
                     <div className="m-1 rounded-md text-center underline bold text-2xl" >{community.communityName}</div>
                     <div className="m-1 rounded-md text-xl" >{community.content}</div>
-                </Link>
-                  </div>
+                  </Link>
+                </div>
               ))}
             </div>
           )}
