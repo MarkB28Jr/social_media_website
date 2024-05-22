@@ -9,11 +9,11 @@ const CommunityDetails = () => {
   const [content, setContent] = useState('')
 
   const fetchSocials = async () => {
-    let response = await axios.get('/social')
+    let response = await axios.get('/')
     setSocials(response.data)
   }
   const fetchCommunitys = async () => {
-    let response = await axios.get(`/social/community/${id}`)
+    let response = await axios.get(`/community/${id}`)
     setCommunity(response.data)
     console.log(response)
   }
@@ -21,7 +21,7 @@ const CommunityDetails = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post(`/social/community/${id}`, { content })
+      const { data } = await axios.post(`/community/${id}`, { content })
       if (data.error) {
         toast.error(data.error)
       } else {
@@ -31,8 +31,6 @@ const CommunityDetails = () => {
       console.log(error)
     }
   }
-
-
 
   useEffect(() => {
     fetchCommunitys();
@@ -46,26 +44,25 @@ const CommunityDetails = () => {
     return <div>Loading...</div>
   }
 
-
   return (
     <div className="flex h-screen flex-center ">
-      <div className="bg-purple-100 w-1/3">
-        <h1 className="text-center bold text-2xl">Profile</h1>
-        {socials.length > 0 && (
-          <div className="grid grid-cols-1 justify-items-center text-center" >
-            {socials.map((social) => (
-              <div key={social._id} className="border-1 border-black-200 rounded-sm border-solid border-black">
-                <div>
-                  <img src={social.image} className="w-60 rounded-full m-1 justify-items-center self-center" placeholder="Enter Image URL address" />
-                </div>
-                <div>{social.user}</div>
-                <div className="m-1 rounded-md text-center" >Name: {social.profileName}</div>
-                <div className="m-1 rounded-md text-center" >Age: {social.age}</div>
-                <div className="m-1 rounded-md text-center" >Gender: {social.gender}</div>
-              </div>
-            ))}
+      <div className="w-1/4 h-4/10 max-width-50">
+        <h1 className="bold text-2xl text-center text-white mt-96 ">Profile</h1>
+        <div className="grid grid-cols-1 w-100" >
+          <img src={image} className="w-60 rounded-full m-1 justify-items-center self-center" placeholder="Enter Image URL address" />
+          <div className="m-1 rounded-md bold" >Username: {userId.username}</div>
+          <div className="m-1 rounded-md bold" >Email: {userId.email}</div>
+          <div className="m-1 rounded-md bold" >Name: {userId.profileName}</div>
+          <div className="m-1 rounded-md bold" >Age: {userId.age}</div>
+          <div className="m-1 rounded-md bold" >Gender: {userId.gender}</div>
+
+          <div className="justify-items-center self-center">
+            <Link to={`/users/${userId._id}`}>
+              <button className="border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-1 m-1 w-11 rounded-lg">Edit</button>
+            </Link>
+            <button className="border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-2 w-12 rounded-lg " onClick={handleDelete} >Delete</button>
           </div>
-        )}
+        </div>
       </div>
 
       <div className="flex flex-col bg-purple-500 w-2/3 p-2">
@@ -73,7 +70,7 @@ const CommunityDetails = () => {
           <h1 className="text-center bold text-2xl underline">{community.communityName}</h1>
         </div>
         <div className="bg-white border-1 border-solid border-black mt-3">
-         {community.content}
+          {community.content}
         </div>
 
         <form onSubmit={onSubmit}>

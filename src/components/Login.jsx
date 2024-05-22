@@ -20,12 +20,13 @@ const Login = () => {
       } else {
         /*************** Store in local Storage userId ***************/
         localStorage.setItem('userId', JSON.stringify(data._id))
-        console.log(JSON.parse(window.localStorage.getItem('userId')))
+        let buddy = JSON.parse(window.localStorage.getItem('userId'))
+        console.log(buddy)
         /*************** Store in local Storage userData ***************/
-        localStorage.setItem('userData', JSON.stringify(data))
+        // localStorage.setItem('userData', JSON.stringify(data))
         /*************** Pull from local Storage userData ***************/
-        const user = window.localStorage.getItem('userData')
-        console.log(user)
+        // const user = window.localStorage.getItem('userData')
+        // console.log(user)
         toast.success('Login Succesful!')
         navigate('/')
       }

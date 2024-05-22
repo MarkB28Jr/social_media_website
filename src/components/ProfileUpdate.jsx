@@ -2,35 +2,47 @@ import { useState, useEffect } from "react"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import { toast } from 'react-hot-toast'
-import { useParams } from "react-router-dom"
 
 
 
 const ProfileUpdate = () => {
 
   const navigate = useNavigate()
-  const { id } = useParams()
-  const [socials, setSocials] = useState('')
-  const [profileName, setProfileName] = useState('')
-  const [age, setAge] = useState('')
-  const [gender, setGender] = useState('')
-  const [image, setImage] = useState('')
+  const [user, setUser] = useState('')
+  const [profileName, setProfileName] = useState(user?.profile?.profileName || '')
+  const [age, setAge] = useState(user?.profile?.profileName || '')
+  const [gender, setGender] = useState(user?.profile?.profileName || '')
+  const [image, setImage] = useState(user?.profile?.profileName || '')
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await axios.put(`/social/${id}`, { profileName, age, gender, image })
-      setSocials([...socials, data])
-      if (data.error) {
-        toast.error(data.error)
-      } else {
-        toast.success('Profile Updated!')
-        navigate('/social')
+    const userId = window.localStorage.getItem('userId') ? JSON.parse(window.localStorage.getItem('userId')) : null
+    // console.log(userId)
+    const { data } = await axios.put(`/users/${userId}`, {
+      user: {
+        profile: {
+          profileName,
+          age,
+          gender,
+          image
+        }
       }
-    } catch (error) {
-      console.log(error)
+    }
+    )
+    setUser(user)
+    setProfileName(profileName)
+    setAge(age)
+    setGender(gender)
+    setImage(image)
+
+    if (data.error) {
+      toast.error(data.error)
+    } else {
+      toast.success('Profile Updated Successfully!')
+      navigate('/social')
     }
   }
+
   return (
     <div className="gap grid justify-center items-center text-center center mt-20">
       <form onSubmit={onSubmit} className="bg-gray-300 rounded-lg" >

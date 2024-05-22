@@ -3,14 +3,14 @@ import { Routes, Route } from "react-router-dom"
 import Social from './components/Social'
 import Home from './components/Home'
 import Login from './components/Login'
-import Profile from './components/Profile'
+// import Profile from './components/Profile'
 import Nav from './components/Nav'
 import CommunityDetails from './components/CommunityDetails';
 import Register from './components/Register'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
 import ProfileUpdate from './components/ProfileUpdate';
-import ProfileDelete from './components/ProfileDelete';
+// import ProfileDelete from './components/ProfileDelete';
 
 function App() {
   // axios.defaults.baseURL = 'https://backend-community-app-e900ac011257.herokuapp.com'
@@ -25,9 +25,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/social" element={<Social />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/social/:id" element={<ProfileUpdate />} />
-          <Route path="/social/:id" element={<ProfileDelete />} />
+          {/* <Route path="/profile" element={<Profile />} /> */}
+          <Route path="/users/:id" element={<ProfileUpdate />} />
+          {/* <Route path="/users/:id" element={<ProfileDelete />} /> */}
           <Route path="/users/login" element={<Login />} />
           <Route path="/social/community/:id" element={<CommunityDetails />} />
           <Route path="/users/register" element={<Register />} />
