@@ -2,13 +2,8 @@ import { useState, useEffect, useContext } from "react"
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from 'react-hot-toast'
-import UserContext from "../context/UserContext"
-
-
 
 const Profile = () => {
-  const { user } = useContext(UserContext)
-
   const navigate = useNavigate()
   const [socials, setSocials] = useState('')
   const [profileName, setProfileName] = useState('')

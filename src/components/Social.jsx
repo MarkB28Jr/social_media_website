@@ -3,13 +3,11 @@ import axios from 'axios'
 // import { useNavigate } from "react-router-dom"
 import { toast } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
-import UserContext from "../context/UserContext"
 
 const Social = () => {
   const [socials, setSocials] = useState('')
   const [communitys, setCommunitys] = useState('')
   const [communityName, setCommunity] = useState('')
-  const { user } = useContext(UserContext)
 
   const fetchSocials = async () => {
     let response = await axios.get('/social')
@@ -48,7 +46,7 @@ const Social = () => {
   return (
     <div className="flex h-screen ">
       <div className="bg-purple-100 w-1/3">
-        <h1 className="bold text-2xl text-center mt-20">{user.email}</h1>
+        <h1 className="bold text-2xl text-center mt-20">Profile</h1>
         {socials.length > 0 && (
           <div className="grid grid-cols-1 justify-items-center  w-100" >
             {socials.map((social) => (

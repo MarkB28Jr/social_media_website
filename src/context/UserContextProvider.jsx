@@ -1,26 +1,26 @@
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+// import axios from 'axios'
+// import { useState, useEffect } from 'react'
 
-import UserContext from './UserContext'
+// import UserContext from './UserContext'
 
 
-const UserContextProvider = ({ children }) => {
-  const [user, setUser] =useState(null)
-  const [id, setId] = useState(null)
+// const UserContextProvider = ({ children }) => {
+//   const [user, setUser] =useState(null)
+//   const [id, setId] = useState(null)
 
-  // useEffect(() => {
-  //   axios.get('/users').then(response => {
-  //     localStorage.setItem('user', data)
-  //     setId(response.data.id);
-  //     setUser(response.data.username);
-  //   })
-  // }, [])
+//   // useEffect(() => {
+//   //   axios.get('/users').then(response => {
+//   //     localStorage.setItem('user', data)
+//   //     setId(response.data.id);
+//   //     setUser(response.data.username);
+//   //   })
+//   // }, [])
 
-  return (
-    <UserContext.Provider value={{ user, setUser, id, setId }}>
-      {children}
-    </UserContext.Provider>
-  );
-}
+//   return (
+//     <UserContext.Provider value={{ user, setUser, id, setId }}>
+//       {children}
+//     </UserContext.Provider>
+//   );
+// }
 
-export default UserContextProvider
+// export default UserContextProvider

@@ -9,8 +9,6 @@ import CommunityDetails from './components/CommunityDetails';
 import Register from './components/Register'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast'
-import UserContextProvider from './context/UserContextProvider';
-// import Rout from './components/Rout';
 import ProfileUpdate from './components/ProfileUpdate';
 import ProfileDelete from './components/ProfileDelete';
 
@@ -20,7 +18,7 @@ function App() {
   axios.defaults.withCredentials = true
 
   return (
-    <UserContextProvider className="bg-cyan-500 hover:bg-cyan-600">
+    <div className="bg-cyan-500 hover:bg-cyan-600">
       <Nav />
       <Toaster position='center' toastOptions={{ duration: 2000 }} />
       <main className='flex-center'>
@@ -32,11 +30,10 @@ function App() {
           <Route path="/social/:id" element={<ProfileDelete />} />
           <Route path="/users/login" element={<Login />} />
           <Route path="/social/community/:id" element={<CommunityDetails />} />
-          {/* <Route path="/users/register" element={<Rout />} />  */}
           <Route path="/users/register" element={<Register />} />
         </Routes>
       </main>
-    </UserContextProvider>
+    </div>
   )
 }
 

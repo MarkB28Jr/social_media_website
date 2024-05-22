@@ -1,15 +1,13 @@
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom"
-import { useContext, useState } from "react"
-// import UserContext from "../context/UserContext"
+import { useState } from "react"
 
 const Login = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  // const {setUser} = useContext(UserContext)
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -20,11 +18,14 @@ const Login = () => {
       if (data.error) {
         toast.error(data.error)
       } else {
-        // setLoggedInUser(username)
-        // console.log(username)
-        // setId(data.id)
-        // localStorage.setItem('user', data)
-        console.log(data)
+        // console.log(data)
+        // localStorage.setItem('userId', data.id)
+        // console.log(window.localStorage.getItem('userId'))
+        /*************** Store in local Storage ***************/
+        localStorage.setItem('userData', JSON.stringify(data))
+        /*************** Pull from local Storage ***************/
+        const user = window.localStorage.getItem('userData')
+        console.log(user)
         toast.success('Login Succesful!')
         navigate('/')
       }
