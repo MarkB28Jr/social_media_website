@@ -15,7 +15,7 @@ const Logoff = () => {
       console.log(error)
     }
   }
-  
+
   return (
     <div>
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 border border-blue-700 rounded" type="submit" onClick={onSubmit} >Log Off</button>
