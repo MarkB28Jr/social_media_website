@@ -6,7 +6,6 @@ import { toast } from 'react-hot-toast'
 const Profile = () => {
 
   const navigate = useNavigate()
-  const [socials, setSocials] = useState('')
   const [profileName, setProfileName] = useState('')
   const [age, setAge] = useState('')
   const [gender, setGender] = useState('')
@@ -16,11 +15,9 @@ const Profile = () => {
   const fetchUserData = async () => {
     try {
       const userId = window.localStorage.getItem('userId') ? JSON.parse(window.localStorage.getItem('userId')) : null
-      // console.log(userId)
       if (userId) {
         const response = await axios.get(`/users/${userId}`);
         setUserId(response.data);
-        // console.log(response.data)
       }
     } catch (error) {
       console.error('Error fetching user data:', error);

@@ -22,11 +22,6 @@ const Login = () => {
         localStorage.setItem('userId', JSON.stringify(data._id))
         let buddy = JSON.parse(window.localStorage.getItem('userId'))
         console.log(buddy)
-        /*************** Store in local Storage userData ***************/
-        // localStorage.setItem('userData', JSON.stringify(data))
-        /*************** Pull from local Storage userData ***************/
-        // const user = window.localStorage.getItem('userData')
-        // console.log(user)
         toast.success('Login Succesful!')
         navigate('/')
       }
