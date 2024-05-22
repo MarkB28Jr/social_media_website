@@ -70,7 +70,7 @@ const CommunityDetails = () => {
       <div className="w-1/4 h-4/10 max-width-50">
         <h1 className="bold text-2xl text-center text-white ">Profile</h1>
         {userId.profile && (
-          <div className="mx-7 border-gray-300 border-5 bg-black rounded-lg p-3 text-white">
+               <div className="mx-7 border-black border-solid border-5 bg-gray-300 rounded-lg p-3 text-black">
             <div className="grid grid-cols-1 w-100" >
               <div className="grid grid-col justify-center">
                 <img src={userId.profile.image} className="w-60 rounded-full m-1 justify-items-center self-center align-center" placeholder="Enter Image URL address" />
@@ -85,7 +85,7 @@ const CommunityDetails = () => {
               <Link to={`/users/${userId._id}`}>
                 <button className="text-black border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-1 m-1 w-11 rounded-lg">Edit</button>
               </Link>
-              <button className="text-white border-2 bg-blue-700 w-20 bg-white mb-2 w-12 rounded-lg " onClick={handleDelete} >Delete</button>
+              <button className="text-black border-2 bg-blue-700 w-20 bg-white mb-2 w-12 rounded-lg " onClick={handleDelete} >Delete</button>
             </div>
           </div>
         )}

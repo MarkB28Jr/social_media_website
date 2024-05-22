@@ -9,6 +9,8 @@ const Social = () => {
   const [communitys, setCommunitys] = useState('')
   const [communityName, setCommunityName] = useState('')
   const [userId, setUserId] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [profileName, setProfileName] = useState('')
   const [age, setAge] = useState('')
   const [gender, setGender] = useState('')
@@ -22,12 +24,12 @@ const Social = () => {
       let user = response.data
       console.log(user)
       setUserId(user)
-      // console.log(setUserId)
-      setProfileName(user.profileName)
-      // console.log(user.profile.profileName)
-      setAge(user.profile.age)
-      setGender(user.profile.gender)
-      setImage(user.profile.image)
+      setUsername(userId.username)
+      setEmail(userId.email)
+      setProfileName(profileName)
+      setAge(age)
+      setGender(gender)
+      setImage(image)
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
@@ -91,18 +93,17 @@ const Social = () => {
     <div className="flex h-screen ">
       {/****************************** Profile Section *****************************/}
       <div className="w-1/4 h-4/10 max-width-50">
-        <h1 className="bold text-2xl text-center text-white ">Profile</h1>
-        {userId.profile && (
-          <div className="mx-7 border-gray-300 border-5 bg-black rounded-lg p-3 text-white">
+        <h1 className="bold text-2xl text-center text-black ">Profile</h1>
+          <div className="mx-7 border-black border-solid border-5 bg-gray-300 rounded-lg p-3 text-black">
             <div className="grid grid-cols-1 w-100" >
               <div className="grid grid-col justify-center">
-                <img src={userId.profile.image} className="w-60 rounded-full m-1 justify-items-center self-center align-center" placeholder="Enter Image URL address" />
+              <img src={userId && userId.profile ? userId.profile.image : ''} className="w-60 rounded-full m-1 justify-items-center self-center align-center" placeholder="Enter Image URL address" />
               </div>
-              <div className="m-1 rounded-md bold" >Username: {userId.username}</div>
-              <div className="m-1 rounded-md bold" >Email: {userId.email}</div>
-              <div className="m-1 rounded-md bold" >Name: {userId.profile.profileName}</div>
-              <div className="m-1 rounded-md bold" >Age: {userId.profile.age}</div>
-              <div className="m-1 rounded-md bold" >Gender: {userId.profile.gender}</div>
+              <div className="m-1 rounded-md bold text-black" >Username: {userId.username}</div>
+              <div className="m-1 rounded-md bold text-black" >Email: {userId.email}</div>
+              <div className="m-1 rounded-md bold text-black" >Name: {userId && userId.profile ? userId.profile.profileName : ''} </div>
+              <div className="m-1 rounded-md bold text-black" >Age: {userId && userId.profile ? userId.profile.age : ''} </div>
+              <div className="m-1 rounded-md bold text-black" >Gender: {userId && userId.profile ? userId.profile.gender : ''} </div>
             </div>
             <div className="flex justify-items-center self-center align-center">
               <Link to={`/users/${userId._id}`}>
@@ -111,7 +112,6 @@ const Social = () => {
               <button className="text-black border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-1 m-1 w-11 rounded-lg" onClick={handleDelete} >Delete</button>
             </div>
           </div>
-        )}
       </div>
 
       {/****************************** Community Section *****************************/}

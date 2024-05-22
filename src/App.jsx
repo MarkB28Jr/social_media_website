@@ -11,8 +11,8 @@ import { Toaster } from 'react-hot-toast'
 import ProfileUpdate from './components/ProfileUpdate'
 
 function App() {
-  axios.defaults.baseURL = 'https://backend-community-app-e900ac011257.herokuapp.com'
-  // axios.defaults.baseURL = 'http://localhost:4000'
+  // axios.defaults.baseURL = 'https://backend-community-app-e900ac011257.herokuapp.com'
+  axios.defaults.baseURL = 'http://localhost:4000'
   axios.defaults.withCredentials = true
 
   return (
