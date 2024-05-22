@@ -20,11 +20,11 @@ const Social = () => {
       const userId = window.localStorage.getItem('userId') ? JSON.parse(window.localStorage.getItem('userId')) : null
       const response = await axios.get(`/users/${userId}`)
       let user = response.data
-      // console.log(user)
+      console.log(user)
       setUserId(user)
       // console.log(setUserId)
-      setProfileName(user.profile.profileName)
-      console.log(user.profile.profileName)
+      setProfileName(user.profileName)
+      // console.log(user.profile.profileName)
       setAge(user.profile.age)
       setGender(user.profile.gender)
       setImage(user.profile.image)
@@ -104,11 +104,11 @@ const Social = () => {
               <div className="m-1 rounded-md bold" >Age: {userId.profile.age}</div>
               <div className="m-1 rounded-md bold" >Gender: {userId.profile.gender}</div>
             </div>
-            <div className="justify-items-center self-center">
+            <div className="flex justify-items-center self-center align-center">
               <Link to={`/users/${userId._id}`}>
                 <button className="text-black border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-1 m-1 w-11 rounded-lg">Edit</button>
               </Link>
-              <button className="text-white border-2 bg-blue-700 w-20 bg-white mb-2 w-12 rounded-lg " onClick={handleDelete} >Delete</button>
+              <button className="text-black border-solid border-2 border-black bg-blue-200 w-20 bg-white mb-1 m-1 w-11 rounded-lg" onClick={handleDelete} >Delete</button>
             </div>
           </div>
         )}
