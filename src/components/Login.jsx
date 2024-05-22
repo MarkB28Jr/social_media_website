@@ -18,12 +18,12 @@ const Login = () => {
       if (data.error) {
         toast.error(data.error)
       } else {
-        // console.log(data)
-        // localStorage.setItem('userId', data.id)
-        // console.log(window.localStorage.getItem('userId'))
-        /*************** Store in local Storage ***************/
+        /*************** Store in local Storage userId ***************/
+        localStorage.setItem('userId', JSON.stringify(data._id))
+        console.log(JSON.parse(window.localStorage.getItem('userId')))
+        /*************** Store in local Storage userData ***************/
         localStorage.setItem('userData', JSON.stringify(data))
-        /*************** Pull from local Storage ***************/
+        /*************** Pull from local Storage userData ***************/
         const user = window.localStorage.getItem('userData')
         console.log(user)
         toast.success('Login Succesful!')

@@ -10,12 +10,31 @@ const Profile = () => {
   const [age, setAge] = useState('')
   const [gender, setGender] = useState('')
   const [image, setImage] = useState('')
-
+  const [userData, setUserData] = useState(null)
+  const [username, setUserName] = useState('')
+  const [userId, setUserId] = useState('')
+  
   const fetchSocials = async () => {
     let response = await axios.get('/social')
     setSocials(response.data)
   }
+  const fetchUserData = async () => {
+    try {
+      const userId = window.localStorage.getItem('userId') ? JSON.parse(window.localStorage.getItem('userId')) : null;
 
+      if (userId) {
+        console.log(userId)
+        const response = await axios.get(`/social/${userId}`);
+        setU
+        setUserData(response.data)
+        setUserName(response.data.name)
+        console.log(setUserName)
+        console.log(setUserData)
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,7 +54,7 @@ const Profile = () => {
       console.log(error)
     }
   }
-
+  
   const handleDelete = async (id) => {
     try {
       await axios.delete(`/social/community/delete${id}`)
@@ -46,15 +65,21 @@ const Profile = () => {
       toast.error('Error deleting profile')
     }
   }
-
+  
   useEffect(() => {
     fetchSocials();
   }, [])
+  useEffect(() => {
+    fetchUserData();
+  }, [])
+
   /*************** Return ***************/
   return (
     <div className="gap-10 flex justify-center items-center text-center center mt-20 ">
       <form onSubmit={onSubmit} className="bg-gray-300 rounded-lg" >
-        <h1 className="text-center bold text-2xl">Profile{user}</h1>
+        <h1 className="text-center bold text-2xl">
+          
+          </h1>
         <div>
           <input
             type="text"
